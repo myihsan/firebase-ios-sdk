@@ -42,6 +42,9 @@
 
 /// The string is a UTF-8 representation of NSData.
 - (NSString *)stringValue {
+  if (!_data) {
+    return nil;
+  }
   return [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];
 }
 
