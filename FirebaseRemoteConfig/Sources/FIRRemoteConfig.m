@@ -385,7 +385,7 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
 
 - (FIRRemoteConfigValue *)configValueForKey:(NSString *)key {
   if (!key) {
-    return [[FIRRemoteConfigValue alloc] initWithData:[NSData data]
+    return [[FIRRemoteConfigValue alloc] initWithData:nil
                                                source:FIRRemoteConfigSourceStatic];
   }
   NSString *FQNamespace = [self fullyQualifiedNamespace:_FIRNamespace];
@@ -407,7 +407,7 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
       return;
     }
 
-    value = [[FIRRemoteConfigValue alloc] initWithData:[NSData data]
+    value = [[FIRRemoteConfigValue alloc] initWithData:nil
                                                 source:FIRRemoteConfigSourceStatic];
   });
   return value;
@@ -415,7 +415,7 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
 
 - (FIRRemoteConfigValue *)configValueForKey:(NSString *)key source:(FIRRemoteConfigSource)source {
   if (!key) {
-    return [[FIRRemoteConfigValue alloc] initWithData:[NSData data]
+    return [[FIRRemoteConfigValue alloc] initWithData:nil
                                                source:FIRRemoteConfigSourceStatic];
   }
   NSString *FQNamespace = [self fullyQualifiedNamespace:_FIRNamespace];
@@ -427,7 +427,7 @@ typedef void (^FIRRemoteConfigActivateChangeCompletion)(BOOL changed, NSError *_
     } else if (source == FIRRemoteConfigSourceDefault) {
       value = self->_configContent.defaultConfig[FQNamespace][key];
     } else {
-      value = [[FIRRemoteConfigValue alloc] initWithData:[NSData data]
+      value = [[FIRRemoteConfigValue alloc] initWithData:nil
                                                   source:FIRRemoteConfigSourceStatic];
     }
   });
